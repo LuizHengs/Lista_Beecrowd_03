@@ -1,20 +1,20 @@
 package B1068;
 
-class pilha<T> throws outException {
+class PilhaEnc {
 
     public class No {
-        private T conteudo;
+        private char conteudo;
         private No prox;
 
         public No(){
             setProx(null);
         }
 
-        public int getConteudo() {
+        public char getConteudo() {
             return conteudo;
         }
 
-        public void setConteudo(int conteudo) {
+        public void setConteudo(char conteudo) {
             this.conteudo = conteudo;
         }
 
@@ -48,7 +48,7 @@ class pilha<T> throws outException {
         return nElementos;
 
 	/*  No p = topo;
-	    	int i = 0;
+	    	char i = 0;
 	    	while(p != null){
 	       p = p.getProx();
 	       i++;
@@ -58,10 +58,10 @@ class pilha<T> throws outException {
     }
 
     /** Consulta o elemento do topo da Pilha
-     Retorna -1 se a pilha estiver vazia.*/
-    public int top (){
+     Joga  Exception se a pilha estiver vazia.*/
+    public char top () throws outException{
         if (vazia()){
-            return -1; // Pilha vazia
+            throw new outException("VAZIA", "Esta pilha esta vazia!");
         }
 
         return topo.getConteudo();
@@ -69,7 +69,7 @@ class pilha<T> throws outException {
 
     /** Insere um elemento no topo da pilha.
      Retorna true se a insercao funcionar*/
-    public boolean push(int valor) {
+    public boolean push(char valor) {
 
         // Aloca memoria para novo no e preenche conteudo
         No novoNo = new No();
@@ -89,13 +89,13 @@ class pilha<T> throws outException {
     /** Retira o elemento do topo da pilha.
      Retorna -1 se a pilha estiver vazia.
      Caso contrário retorna o valor removido */
-    public int pop () {
+    public char pop () throws outException {
         if (vazia()) {
-            return -1; // pilha vazia
+            throw new outException("VAZIA!", "Esta pilha esta vazia!");
         }
         // Guarda o nó que é topo da pilha e o seu conteudo
         No p = topo;
-        int valor = p.getConteudo();
+        char valor = p.getConteudo();
 
         /* Modifica o topo da pilha para ser o proximo elemento (2o elemento da pilha) */
         /* Isso equivale a retirar o 1o elemento (topo) da pilha */
